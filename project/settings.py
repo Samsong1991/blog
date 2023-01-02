@@ -125,6 +125,10 @@ STATIC_URL = '/static/'
 
 # Django Rest Framework
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }
@@ -132,3 +136,14 @@ REST_FRAMEWORK = {
 
 # User
 AUTH_USER_MODEL = 'common.User'
+
+
+# Email
+EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
+MAILER_EMAIL_BACKEND = EMAIL_BACKEND
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'zgj0607@163.com'
+EMAIL_HOST_PASSWORD = 'xxxx'
+EMAIL_SUBJECT_PREFIX = u'[LSS]'
+EMAIL_USE_SSL = True
